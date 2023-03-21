@@ -39,6 +39,7 @@ pip install -r requirements.txt
 ```
 7. Переходим в папку с файлом docker-compose.yaml:
 ```
+cd ..
 cd infra
 ```
 8. Поднимаем контейнеры (infra_db_1, infra_web_1, infra_nginx_1):
