@@ -62,7 +62,7 @@ docker-compose exec web python manage.py collectstatic --no-input
 ```
 12. Создаем дамп базы данных:
 ```
-docker-compose exec web python manage.py dumpdata > dumpPostrgeSQL.json
+docker-compose exec web python manage.py dumpdata > fixtures.json
 ```
 13. Останавливаем контейнеры:
 ```
@@ -121,8 +121,3 @@ http://127.0.0.1:8000/api/v1/titles/{title_id}/reviews/{review_id}/comments/
 ```
 http://127.0.0.1:8000/redoc/
 ```
-**Авторы проекта:**<br/>
-**Сергей** - https://github.com/SG-Mash<br/>
-**Виталий** - https://github.com/LordKisik<br/>
-**Кирилл** - https://github.com/goldenlion52rus<br/>
-
