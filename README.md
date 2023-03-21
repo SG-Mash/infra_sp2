@@ -13,59 +13,68 @@
 - Gunicorn
 - Nginx
 ## Как запустить проект:
-1. Клонировать репозиторий и перейти в него в командной строке:
+Клонировать репозиторий и перейти в него в командной строке:
 ```
 git clone git@github.com:LuckyPoRus/infra_sp2.git
 ```
-2. Переход в директорию с проектом:
+Переход в директорию с проектом:
 ```
 cd api_yamdb
 ```
-3. Cоздать и активировать виртуальное окружение:
+Cоздать и активировать виртуальное окружение:
 ```
 python -m venv venv
 ```
-4. Активировать виртуальное окружение:
+Активировать виртуальное окружение:
 ```
 source venv/scripts/activate
 ```
-5. Оновление PIP:
+Оновление PIP:
 ```
 python -m pip install --upgrade pip
 ```
-6. Установка зависимостей используемых в проекте:
+Установка зависимостей используемых в проекте:
 ```
 pip install -r requirements.txt
 ```
-7. Переходим в папку с файлом docker-compose.yaml:
+Переходим в папку с файлом docker-compose.yaml:
 ```
 cd ..
 cd infra
 ```
-8. Поднимаем контейнеры (infra_db_1, infra_web_1, infra_nginx_1):
+Шаблон наполнения env-файла:
+```
+DB_ENGINE=django.db.backends.postgresql
+DB_NAME=< имя базы данных>
+POSTGRES_USER=<логин для подключения к базе данных>
+POSTGRES_PASSWORD=<пароль для подключения к БД (установите свой)>
+DB_HOST=< название сервиса (контейнера)>
+DB_PORT=5432 # порт для подключения к БД
+```
+Поднимаем контейнеры (infra_db_1, infra_web_1, infra_nginx_1):
 ```
 docker-compose up -d --build
 ```
-9. Выполняем миграции:
+Выполняем миграции:
 ```
 docker-compose exec web python manage.py makemigrations
 ```
 ```
 docker-compose exec web python manage.py migrate
 ```
-10. Создаем суперпользователя:
+Создаем суперпользователя:
 ```
 docker-compose exec web python manage.py createsuperuser
 ```
-11. Собираем статику:
+Собираем статику:
 ```
 docker-compose exec web python manage.py collectstatic --no-input
 ```
-12. Создаем дамп базы данных:
+Создаем дамп базы данных:
 ```
 docker-compose exec web python manage.py dumpdata > fixtures.json
 ```
-13. Останавливаем контейнеры:
+Останавливаем контейнеры:
 ```
 docker-compose down -v
 ```
