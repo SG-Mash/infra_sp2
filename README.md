@@ -15,7 +15,7 @@
 ## Как запустить проект:
 Клонировать репозиторий и перейти в него в командной строке:
 ```
-git clone git@github.com:LuckyPoRus/infra_sp2.git
+git clone https://github.com/SG-Mash/infra_sp2.git
 ```
 Переход в директорию с проектом:
 ```
